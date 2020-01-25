@@ -77,10 +77,34 @@ CREATE TABLE OrderDetails (
 OrderID INT,
 ProductID INT,
 Quantity INT DEFAULT 0,
-DateOrdered DATE NOT NULL,
+DateOrdered DATE NOT NULL DEFAULT GETDATE(),
 OrderTotal INT DEFAULT 0 NOT NULL,
-ShippingAdress VARCHAR(200) NOT NULL,
+ShippingAddress VARCHAR(200) NOT NULL,
 PRIMARY KEY (OrderID, ProductID),
 FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON UPDATE CASCADE ON DELETE NO ACTION,
 FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON UPDATE CASCADE ON DELETE NO ACTION
 )
+
+--Insert customer
+INSERT INTO Customer(FirstName, LastName, Email) VALUES('John', 'Smith', 'John@gmail.com')
+INSERT INTO Customer VALUES('Jack', NULL, 'Smith', '4', 'Jackson St', 'Johnville', '2345', 'NSW', 'Australia', 'Active','JohnG@gmail.com', '4356 5432', '2020-01-26')
+INSERT INTO Customer(FirstName, LastName, Email) VALUES('Aaron', 'Moss', 'aaronmoss@gmail.com')
+
+--Insert Admin
+INSERT INTO Admin(AdminNo, FirstName, LastName, Email, Phone) VALUES('23859', 'Ben', 'Simon', 'BenS2@gmail.com', '5432 8453')
+INSERT INTO Admin(AdminNo, FirstName, LastName, Email, Phone) VALUES('58743', 'Jack', 'Benson', 'jbenson12@gmail.com', '5432 3219')
+
+--Insert Category
+INSERT INTO Category(Name, Description) VALUES ('Video Game', 'A Video Game')
+INSERT INTO Category(Name, Description) VALUES ('DVD', 'A DVD')
+INSERT INTO Category(Name, Description) VALUES ('Book', 'A Book')
+
+--Insert Products
+INSERT INTO Products(CategoryID, Name, Platform, AmountAvailable, Price) VALUES (1, 'Sonic the hedgehog', 'Nintendo 64', 3, 45)
+INSERT INTO Products(CategoryID, Name, Platform, AmountAvailable, Price) VALUES (2, 'Batman', 'Blu Ray', 38, 20)
+
+--Insert Orders
+INSERT INTO Orders(UserID, Total) VALUES (1, 20)
+
+--Insert Order Details
+INSERT INTO OrderDetails(OrderID, ProductID, Quantity, OrderTotal, ShippingAddress) VALUES (1, 2, 1, 20, '20 John Lane, Georgetown, NSW, 2345, Australia')
