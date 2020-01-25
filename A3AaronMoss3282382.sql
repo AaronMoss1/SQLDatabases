@@ -1,5 +1,10 @@
 -- Aaron Moss
 -- Assignment 3: Physical Database Design
+if not exists(select * from sys.databases where name = 'OrdersDB')
+    create database ResourceDB
+GO
+USE ResourceDB
+GO
 DROP TABLE privilegeDecides
 DROP TABLE enrolsIn
 DROP TABLE courseOffering
