@@ -1,5 +1,10 @@
 -- Database that creates tables to store data for an online store
 -- Drops all tables before creating new ones to avoid compiling errors
+if not exists(select * from sys.databases where name = 'OrdersDB')
+    create database OrdersDB
+GO
+USE OrdersDB
+GO
 DROP TABLE OrderDetails
 DROP TABLE Orders
 DROP TABLE Admin
