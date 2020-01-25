@@ -24,7 +24,6 @@ CREATE TABLE Products (
 ProductID INT PRIMARY KEY IDENTITY(1,1),
 CategoryID INT, -- category fk to show what category the product belongs to 
 Name VARCHAR(30) NOT NULL,
-Type VARCHAR(20) NOT NULL,
 Platform VARCHAR(40) NOT NULL,
 AmountAvailable INT NOT NULL DEFAULT 0,
 Price INT NOT NULL DEFAULT 0, -- setting default amounts of price and amount available to 0
