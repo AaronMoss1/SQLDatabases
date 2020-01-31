@@ -66,7 +66,7 @@ UserID INT,
 OrderStatus VARCHAR(15) NOT NULL DEFAULT 'Not Shipped',
 PayStatus VARCHAR(10) NOT NULL DEFAULT 'Unpaid',
 Total INT NOT NULL,
-FOREIGN KEY (userID) REFERENCES Customer(UserID) ON UPDATE CASCADE ON DELETE NO ACTION, --originally had payment ID as a FK, but decided to put it on user so admin can just refer to user to get payment details
+FOREIGN KEY (userID) REFERENCES Customer(UserID) ON UPDATE CASCADE ON DELETE NO ACTION,
 CHECK (OrderStatus IN ('Not Shipped', 'Shipped')),
 CHECK (PayStatus IN ('Unpaid', 'Paid')), --checks to validate input
 )
@@ -81,7 +81,7 @@ DateOrdered DATE NOT NULL DEFAULT GETDATE(),
 OrderTotal INT DEFAULT 0 NOT NULL,
 ShippingAddress VARCHAR(200) NOT NULL,
 PRIMARY KEY (OrderID, ProductID),
-FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON UPDATE CASCADE ON DELETE NO ACTION,
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON UPDATE CASCADE ON DELETE CASCADE,
 FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON UPDATE CASCADE ON DELETE NO ACTION
 )
 
